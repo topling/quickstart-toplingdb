@@ -54,19 +54,19 @@ ToplingDB SaaS 系列数据库依赖于由以下三部分组成:
 
 * [MyTopling 数据库](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 用户实际使用的数据库。除了数据库本身使用的ECS资源会由阿里云代扣之外，我方会收取数据库调用`Topling SaaS 弹性计算服务`的费用（数据库自动调用，无需用户干涉），费用按照服务使用量计算，计算规则：
-以 ToplingDB 的写放大估计，代理运算量约为总写入量的 5~10 倍, `Topling SaaS 弹性计算服务` 原价为每 GiB 0.5 元。
+以 ToplingDB 的写放大估计，代理运算量约为写入数据量的 5~10 倍, `Topling SaaS 弹性计算服务` 原价为 ￥0.5/G。
 
 `Topling SaaS 弹性计算服务` 按 NormSize 对应的 UnitNum 收费：
 
 $`NormSize = \sqrt {RawSize \times ZipSize}`$
 
-$`UnitNum = {NormSize \over 2^{20}}`$，即每个 Unit 对应 1 MiB 的 NormSize。
+$`UnitNum = {NormSize \over 1048576}`$，即每个 Unit 对应 1 MiB 的 NormSize，$`1048576 = 2^{20}`$ 为 1 MiB
 
 RawSize 指输入数据压缩前的尺寸，ZipSize 指输入数据压缩后的尺寸，按照每小时（出账周期）内的累加量计算。
 
-每个 Unit 收费 0.0005 元（即 NormSize 价格为 0.5 元每 GiB）。
+每个 Unit 收费 ￥0.0005（合 ￥0.5/千Unit，即 NormSize 价格为 ￥0.5/G）。
 
-> 例如: 对于一个持续 6 MiB/s 随机写入的数据库，每小时产生的 NormSize 约为 170 GiB，以原价计约合 85 元。
+> 例如: 对于一个持续 6 MiB/s 随机写入的数据库，每小时产生的 NormSize 约为 170 G，以原价计为 ￥85。
 
 Topling SaaS 弹性计算服务价格量大从优，100G 以内为原价，之后数据量每增加 10 倍，价格降低 50%，10P 以上不再降价，可以购买预付费流量包抵扣，预付费流量包是按量付费的 8 折，详表：
 <table border=1>
@@ -149,17 +149,20 @@ Topling SaaS 弹性计算服务价格量大从优，100G 以内为原价，之�
 </tbody>
 </table>
 
+* 数据量每超出前一个价格区间，就开始按下一个价格区间计价，例如，100G 以内为 ￥0.5/G，100G \~ 1T 区间的 900G 价格为 ￥0.25/G。
+* 用预付费流量包抵扣时，从一开始就按流量包的价格计算，例如购买了 100T 的流量包，从一开始就按 ￥0.05/G 的价格计算。
+
 ## 常见问题
 
 * 实例创建失败
- - 弹性计算服务被关闭
-    如果您开通 `Topling SaaS 弹性计算服务` 后关闭了服务将无法继续创建 ToplingDB 相关实例
- - 未开通DMS服务
-    如果实例创建完成，但此用户尚未使用过阿里云的 DMS 服务，则可能会导致创建失败。然而此时实例数据库已创建成功，不影响DMS管理数据库之外的功能。
-    注意，此时虽然计算巢资源栈创建失败，但 ECS 实例已经创建完成，因此阿里云会收取实例费用。
+  - 弹性计算服务被关闭
+    - 如果您开通 `Topling SaaS 弹性计算服务` 后关闭了服务，将无法继续创建 ToplingDB 相关实例
+  - 未开通 DMS 服务
+    - 如果实例创建完成，但此用户尚未使用过阿里云的 DMS 服务，则可能会导致创建失败。然而此时实例数据库已创建成功，不影响 DMS 管理数据库之外的功能。
+      - 注意，此时虽然计算巢资源栈创建失败，但 ECS 实例已经创建完成，因此阿里云会收取实例费用。
 * 忘记用户名密码
-  可以前往DMS控制台，使用用户名 `mytopling_dms` 密码 `MyToplingDmsPw`连接数据库重置。
-  注意，不要修改自动创建的用户，如`sync`，`mytopling_dms`等用户。
+  - 可以前往 DMS 控制台，使用用户名 `mytopling_dms` 密码 `MyToplingDmsPw` 连接数据库重置。
+  - **注意**，不要修改自动创建的用户，如 `sync`，`mytopling_dms` 等用户。
 * 资源栈删除失败
   - 数据库资源栈删除失败
   查看对应安全组(名字以 ros_VpcSecurityGroup_stack 开头)下是否存在其他ECS等资源，如果存在，移出此安全组后重新删除资源栈
