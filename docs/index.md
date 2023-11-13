@@ -4,7 +4,7 @@
 
 ### 1. 开通 [Topling SAAS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html)
 <div align="center" >
-<img src="img/api-image.PNG" height="200"/>
+<img src="img/api-image.png" height="200"/>
 </div>
 <br />
 本服务是后续资源创建的基础，如果未开通，则无法继续。
@@ -12,7 +12,7 @@
 ### 2. 创建 [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75) 
 
 <div align="center" >
-<img src="img/topling-db-env.bmp" height="300"/>
+<img src="img/topling-db-env.png" height="300"/>
 </div>
 <br />
 
