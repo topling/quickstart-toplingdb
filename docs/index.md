@@ -66,7 +66,7 @@ ToplingDB SaaS 系列数据库由以下三部分组成:
 
 $`UnitNum = {NormSize \over 1048576}`$，其中 $`1048576 = 2^{20}`$ 为 1 MiB，即每个 Unit 对应 1 MiB 的 $`NormSize`$
 
-计算 $`NormSize` 时，按照每小时（出账周期）内 $`RawSize`$ 和 $`ZipSize`$ 的累加量计算，每个 Unit 收费 ￥0.0005（合 ￥0.5/千Unit，即 $`NormSize`$ 价格为 ￥0.5/G）。
+计算 $`NormSize`$ 时，按照每小时（出账周期）内 $`RawSize`$ 和 $`ZipSize`$ 的累加量计算，每个 Unit 收费 ￥0.0005（合 ￥0.5/千Unit，即 $`NormSize`$ 价格为 ￥0.5/G）。
 
 以 ToplingDB 的写放大估计，$`NormSize`$ 一般为写入数据量的 5~10 倍，不同的数据 Pattern，写放大会有所不同，以实际为准。
 
