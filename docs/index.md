@@ -9,7 +9,7 @@
 <br />
 本服务是后续资源创建的基础，如果未开通，则无法继续。（本服务为 Topling 的所有数据库提供服务，MyTopling 是其中之一）
 
-### 2. 创建 [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
+### 2. 创建 [Topling 数据库部署环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
 
 <div align="center" >
 <img src="img/topling-db-env.png" height="300"/>
