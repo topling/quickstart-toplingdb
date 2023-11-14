@@ -62,7 +62,7 @@ ToplingDB SaaS 系列数据库由以下三部分组成:
 
 数据压缩消耗的计算量不容易精确计算，但它跟数据压缩前与压缩后的尺寸高度相关。我们用 $`RawSize`$ 表示数据压缩前的尺寸，用 $`ZipSize`$ 表示数据压缩后的尺寸，用两者的几何平均值 $`NormSize = \sqrt {RawSize \times ZipSize}`$ 作为一个折衷，来衡量计算量。
 
-Topling SaaS 将 $`NormSize`$ 转化为 Unit 计费单元来计费：
+然后将 $`NormSize`$ 转化为 Unit 计费单元来计费：
 
 $`UnitNum = {NormSize \over 1048576}`$，其中 $`1048576 = 2^{20}`$ 为 1 MiB，即每个 Unit 对应 1 MiB 的 $`NormSize`$
 
