@@ -25,7 +25,7 @@
 
 ### 2. 创建 [MyTopling 数据库实例](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 
-MyTopling 实例为用户实际使用的数据库。如下图，用户按自身需求填写表单内容，填写完成后即可创建数据库。
+MyTopling 实例是用户实际使用的数据库。如下图，用户按自身需求填写表单内容，填写完成后即可创建数据库。
 <br />
 
 ![](./img/mytopling-img.png)
