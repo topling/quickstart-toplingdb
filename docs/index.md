@@ -60,7 +60,7 @@ ToplingDB SaaS 系列数据库依赖于由以下三部分组成:
 
 $`NormSize = \sqrt {RawSize \times ZipSize}`$
 
-$`UnitNum = {NormSize \over 1048576}`$，即每个 Unit 对应 1 MiB 的 NormSize，$`1048576 = 2^{20}`$ 为 1 MiB
+$`UnitNum = {NormSize \over 1048576}`$，$`1048576 = 2^{20}`$ 为 1 MiB，即每个 Unit 对应 1 MiB 的 NormSize
 
 RawSize 指输入数据压缩前的尺寸，ZipSize 指输入数据压缩后的尺寸，按照每小时（出账周期）内的累加量计算。
 
