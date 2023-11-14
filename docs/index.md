@@ -2,14 +2,15 @@
 
 ## MyTopling 数据库实例创建流程
 
-### 1. 开通 [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html)
+### 1.创建数据库依赖项
+#### 1.1 开通 [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html)
 <div align="center" >
 <img src="img/api-image.png" height="200"/>
 </div>
 <br />
 本服务是后续资源创建的基础，如果未开通，则无法继续。（本服务为 Topling 的所有数据库提供服务，MyTopling 是其中之一）
 
-### 2. 创建 [Topling 数据库部署环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
+#### 1.2 创建 [Topling 数据库部署环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
 
 <div align="center" >
 <img src="img/topling-db-env.png" height="300"/>
@@ -22,16 +23,21 @@
 会创建失败。请删除后重建
 
 
-### 3. 创建 [MyTopling 数据库实例](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
+### 2. 创建 [MyTopling 数据库实例](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 
-MyTopling 实例为用户实际使用的数据库。如图，用户按自身需求填写表单内容，填写完成后即可创建数据库。
+MyTopling 实例为用户实际使用的数据库。如下图，用户按自身需求填写表单内容，填写完成后即可创建数据库。
+<br />
+
+![](./img/mytopling-img.png)
+
+<br />
 
 用户可以使用[阿里云DMS](https://dms.aliyun.com/) 管理创建的数据库，连接数据库的用户名是 `mytopling_dms`，密码是 `MyToplingDmsPw` 。
 此用户仅供 DMS 服务连接，在不修改数据库白名单的前提下，除阿里云官方服务外，其他客户端无法使用此用户名连接数据库。
 
 
 
-### 4. 管理与连接数据库
+### 3. 管理与连接数据库
 
 MyTopling 默认创建的安全组没有放行 3306 端口，但同安全组内可以访问任意端口。
 
@@ -43,10 +49,9 @@ MyTopling 默认创建的安全组没有放行 3306 端口，但同安全组内�
 
 操作方法参见阿里云的相关文档。
 
-
 ## 产品说明
 
-ToplingDB SaaS 系列数据库依赖于由以下三部分组成:
+ToplingDB SaaS 系列数据库由以下三部分组成:
 * [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html) 执行代理运算。在数据库运行的过程中，Topling SaaS 弹性计算服务会按照使用运算量收取费用。
 
 * [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
