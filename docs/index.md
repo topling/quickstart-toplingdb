@@ -60,13 +60,13 @@ ToplingDB SaaS 系列数据库由以下三部分组成:
 * [MyTopling 数据库](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 用户实际使用的数据库。除了数据库本身使用的ECS资源会由阿里云代扣之外，我方会收取数据库调用`Topling SaaS 弹性计算服务`的费用（数据库自动调用，无需用户干涉），按照服务消耗的计算量收费。
 
-数据压缩消耗的计算量不容易精确计算，但它跟数据压缩前与压缩后的尺寸高度相关。我们用 $`RawSize`$ 表示数据压缩前的尺寸，用 $`ZipSize`$ 表示数据压缩后的尺寸，用两者的几何平均值 $`NormSize = \sqrt {RawSize \times ZipSize}`$ 作为一个折衷来衡量计算量，然后将 $`NormSize`$ 转化为 Unit 计费单元来计费：
+数据压缩消耗的计算量不容易精确计算，但它跟数据压缩前与压缩后的尺寸高度相关。我们用 $`RawSize`$ 表示数据压缩前的尺寸，用 $`ZipSize`$ 表示数据压缩后的尺寸，用两者的几何平均值 $`NormSize = \sqrt {RawSize \times ZipSize}`$ 来衡量计算量，然后将 $`NormSize`$ 转化为 $`Unit`$ 计费单元来计费：
 
-$`UnitNum = {NormSize \over 1048576}`$，其中 $`1048576 = 2^{20}`$ 为 1 MiB，即每个 Unit 对应 1 MiB 的 $`NormSize`$
+$`UnitNum = {NormSize \over 1048576}`$，其中 $`1048576 = 2^{20}`$ 为 1 MiB，即每个 $`Unit`$ 对应 1 MiB 的 $`NormSize`$
 
-计算 $`NormSize`$ 时，按照每小时（出账周期）内 $`RawSize`$ 和 $`ZipSize`$ 的累加量计算，每个 Unit 收费 ￥0.0005（合 ￥0.5/千Unit，即 $`NormSize`$ 价格为 ￥0.5/G）。
+计算 $`NormSize`$ 时，按照每小时（出账周期）内 $`RawSize`$ 和 $`ZipSize`$ 的累加量计算，每个 $`Unit`$ 收费 ￥0.0005（合 ￥0.5/千Unit，即 $`NormSize`$ 价格为 ￥0.5/G）。
 
-Topling SaaS 服务价格量大从优，100G 以内为原价，之后数据量(NormSize)每增加 10 倍，价格降低 50%，10P 以上不再降价，可以购买预付费流量包抵扣，预付费流量包是按量付费的 8 折，详表：
+Topling SaaS 服务价格量大从优，100G 以内为原价，之后数据量($`NormSize`$)每增加 10 倍，价格降低 50%，10P 以上不再降价，可以购买预付费流量包抵扣，预付费流量包是按量付费的 8 折，详表：
 <table border=1>
 <tbody align=right>
 <tr align=middle>
@@ -77,8 +77,8 @@ Topling SaaS 服务价格量大从优，100G 以内为原价，之后数据量(N
 <td>折扣<br>
 50 表示<br>
 5 折</td>
-<td>单价<br>
-单位<br>
+<td>单价　　<br>
+单位 • 分<br>
 （￥0.01）</td>
 <td>按量付费<br>
 累计金额<br>
@@ -155,7 +155,7 @@ Topling SaaS 服务价格量大从优，100G 以内为原价，之后数据量(N
 保持 6 MiB/s 的速度持续运行一年，产生 1489T 的 $`NormSize`$，使用按量付费价格为 ￥42,790，使用 10P 的预付费流量包，价格为￥18,613。
 对于普通应用，写压力远低于此，实际支出是非常低的。同时 MyTopling 带来的 3 倍以上 CPU、内存、SSD 节约，更加实实在在地降低了成本。
 
-实际上，一方面现实应用很少有这么高的写压力，另一方面 MyTopling 能承载的极限压力远高于此！此外，Topling 即将推出完全的私有化部署版本，SaaS 也运行在用户的 ECS 上，进一步为高负载应用降低成本。
+实际上，一方面现实应用很少有这么高的写压力，另一方面 MyTopling 能承载的极限压力远高于此！此外，MyTopling 也有完全的私有化部署版本，SaaS 也运行在用户的 ECS 上，按传统方式收费，进一步为高负载应用降低成本。
 
 ## 常见问题
 
