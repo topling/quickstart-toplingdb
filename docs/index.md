@@ -71,8 +71,8 @@ Topling SaaS 服务价格量大从优，100G 以内为原价，之后数据量($
 <tbody align=right>
 <tr align=middle>
 <td>$Norm$<br>$Size$</td>
-<td>unit 千数量<br>
-每千 unit<br>
+<td>$Unit$ 千数<br>
+每千 $Unit$<br>
 对应 1G</td>
 <td>折扣<br>
 50 表示<br>
