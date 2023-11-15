@@ -1,16 +1,28 @@
 # 服务使用说明
 
+## 产品说明
+ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
+* [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html) 执行代理运算。在数据库运行的过程中，Topling SaaS 弹性计算服务会按照使用运算量收取费用。
+
+* [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
+为后续创建 MyTopling 等数据库创建运行环境。包含VPC、vSwitch以及连接到 Topling SaaS 弹性计算服务的对等连接。ToplingDB 系列数据库必须部署在对应地域(Region)的运行环境下。
+
+* [MyTopling 数据库](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
+用户实际使用的数据库。除了数据库本身使用的ECS资源会由阿里云代扣之外，我方会收取数据库调用 `Topling SaaS 弹性计算服务`的费用（数据库自动调用，无需用户干涉），按照服务消耗的计算量收费。
+
+弹性计算服务收费相关详见[后文](#按量付费说明)
+
 ## MyTopling 数据库实例创建流程
 
 ### 1.创建数据库依赖项
-#### 1.1 开通 [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html)
+#### 1.1 开通 [Topling SaaS 弹性计算服务(点击跳转)](https://market.aliyun.com/products/56024006/cmgj00064106.html)
 <div align="center" >
 <img src="img/api-image.png" height="200"/>
 </div>
 <br />
 本服务是后续资源创建的基础，如果未开通，则无法继续。（本服务为 Topling 的所有数据库提供服务，MyTopling 是其中之一）
 
-#### 1.2 创建 [Topling 数据库部署环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
+#### 1.2 创建 [Topling 数据库部署环境(点击跳转)](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
 
 <div align="center" >
 <img src="img/topling-db-env.png" height="300"/>
@@ -23,21 +35,39 @@
 会创建失败。请删除后重建
 
 
-### 2. 创建 [MyTopling 数据库实例](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
+### 2. 创建 [MyTopling 数据库实例(点击跳转)](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 
-MyTopling 实例是用户实际使用的数据库。如下图，用户按自身需求填写表单内容，填写完成后即可创建数据库。
+MyTopling 实例为用户实际使用的数据库。如下图，用户按自身需求填写选项内容，填写完成后即可创建数据库。
 <br />
 
 ![](./img/mytopling-img.png)
 
 <br />
 
-用户可以使用[阿里云DMS](https://dms.aliyun.com/) 管理创建的数据库，连接数据库的用户名是 `mytopling_dms`，密码是 `MyToplingDmsPw` 。
-此用户仅供 DMS 服务连接，在不修改数据库白名单的前提下，除阿里云官方服务外，其他客户端无法使用此用户名连接数据库。
+用户可以使用[阿里云DMS](https://dms.aliyun.com/),如图 管理创建的数据库，使用用户名 `mytopling_dms`连接数据库，为 `MyToplingDmsPw` 。
+![](./img/dms.png)
+
+
+`注意，此用户 (mytopling_dms) 仅供 DMS 服务连接，在不修改数据库白名单的前提下，除阿里云官方服务外，其他客户端无法使用此用户名连接数据库。`
 
 
 
 ### 3. 管理与连接数据库
+
+#### 查看数据库实例
+
+创建 MyTopling 后，可前往[计算巣控制台](https://computenest.console.aliyun.com/service/instance/cn-hangzhou)查看创建的实例。如图
+![](img/compute-nest.png)
+
+点击 MyTopling 数据库实例查看创建的数据库，如图:
+
+![](img/instance.png)
+
+说明：
+
+* 使用私网地址连接数据库,如图中的 10.171.4.55, 公网地址默认无法连接
+* 通过相关超链接可以访问实例的引擎监控和 grafana 监控
+
 
 MyTopling 默认创建的安全组没有放行 3306 端口，但同安全组内可以访问任意端口。
 
@@ -47,18 +77,10 @@ MyTopling 默认创建的安全组没有放行 3306 端口，但同安全组内�
 
 如果现有的其他 VPC 需要连接 MyTopling 数据库，可以使用[云企业网](https://cen.console.aliyun.com/cen/list) 或 [对等连接](https://vpc.console.aliyun.com/vpcpeer) 打通网段.
 
-操作方法参见阿里云的相关文档。
+操作方法参见阿里云的[相关文档](https://help.aliyun.com/zh/vpc/user-guide/cross-vpc-interconnection-overview)。
 
-## 产品说明
+## 按量付费说明
 
-ToplingDB SaaS 系列数据库由以下三部分组成:
-* [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html) 执行代理运算。在数据库运行的过程中，Topling SaaS 弹性计算服务会按照使用运算量收取费用。
-
-* [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
-为后续创建 MyTopling 等数据库创建运行环境。包含VPC、vSwitch以及连接到 Topling SaaS 弹性计算服务的对等连接。ToplingDB 系列数据库必须部署在对应地域(Region)的运行环境下。
-
-* [MyTopling 数据库](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
-用户实际使用的数据库。除了数据库本身使用的ECS资源会由阿里云代扣之外，我方会收取数据库调用`Topling SaaS 弹性计算服务`的费用（数据库自动调用，无需用户干涉），按照服务消耗的计算量收费。
 
 数据压缩消耗的计算量不容易精确计算，但它跟数据压缩前与压缩后的尺寸高度相关。我们用 $`RawSize`$ 表示数据压缩前的尺寸，用 $`ZipSize`$ 表示数据压缩后的尺寸，用两者的几何平均值 $`NormSize = \sqrt {RawSize \times ZipSize}`$ 来衡量计算量，然后将 $`NormSize`$ 转化为 $`Unit`$ 计费单元来计费：
 
@@ -149,6 +171,8 @@ Topling SaaS 服务价格量大从优，100G 以内为原价，之后数据量($
 
 * 每超出前一个价格区间，就开始按下一个价格区间计价，例如，100G 以内为 ￥0.5/G，100G \~ 1T 区间的 900G 价格为 ￥0.25/G。
 * 用预付费流量包抵扣时，从一开始就按流量包的价格计算，例如购买了 100T 的流量包，从一开始就按 ￥0.05/G 的价格计算。
+
+`注:阿里云后付费目前尚未推出流量包，可联系客服享受相同折扣`
 
 以 ToplingDB 的写放大估计，$`NormSize`$ 一般为写入数据量的 5~10 倍，不同的数据 Pattern，写放大会有所不同，以实际为准。
 举例来说: 同时运行 sysbench 和 tpcc，对数据库发出约 6 MiB/s 持续的随机写，每小时产生的 $`NormSize`$ 约为 170 G，以原价计为 ￥85（貌似挺贵）。
