@@ -10,7 +10,7 @@ ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
 * [MyTopling 数据库](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 用户实际使用的数据库。除了数据库本身使用的ECS资源会由阿里云代扣之外，我方会收取数据库调用 `Topling SaaS 弹性计算服务`的费用（数据库自动调用，无需用户干涉），按照服务消耗的计算量收费。
 
-弹性计算服务收费相关详见[后文](#按量付费说明)
+弹性计算服务收费相关详见后文**按量付费说明**
 
 ## MyTopling 数据库的优势
 **ECS 8c32g 本地 SSD(ecs.i3g.2xlarge)**
