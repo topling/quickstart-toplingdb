@@ -16,18 +16,12 @@ ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
 
 ### 1.创建数据库依赖项
 #### 1.1 开通 [Topling SaaS 弹性计算服务(点击跳转)](https://market.aliyun.com/products/56024006/cmgj00064106.html)
-<div align="center" >
 <img src="img/api-image.png" height="200"/>
-</div>
-<br />
 本服务是后续资源创建的基础，如果未开通，则无法继续。（本服务为 Topling 的所有数据库提供服务，MyTopling 是其中之一）
 
 #### 1.2 创建 [Topling 数据库部署环境(点击跳转)](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
 
-<div align="center" >
 <img src="img/topling-db-env.png" height="300"/>
-</div>
-<br />
 
 为数据库实例准备 VPC，每个地域必须创建一次且仅能创建一次。（本运行环境为 Topling 的所有数据库提供支撑，MyTopling 是其中之一）
 
@@ -38,18 +32,14 @@ ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
 ### 2. 创建 [MyTopling 数据库实例(点击跳转)](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 
 MyTopling 实例为用户实际使用的数据库。如下图，用户按自身需求填写选项内容，填写完成后即可创建数据库。
-<br />
 
 ![](./img/mytopling-img.png)
-
-<br />
 
 用户可以使用[阿里云DMS](https://dms.aliyun.com/),如图 管理创建的数据库，使用用户名 `mytopling_dms`连接数据库，为 `MyToplingDmsPw` 。
 ![](./img/dms.png)
 
 
 `注意，此用户 (mytopling_dms) 仅供 DMS 服务连接，在不修改数据库白名单的前提下，除阿里云官方服务外，其他客户端无法使用此用户名连接数据库。`
-
 
 
 ### 3. 管理与连接数据库
@@ -172,11 +162,11 @@ Topling SaaS 服务价格量大从优，100G 以内为原价，之后数据量($
 * 每超出前一个价格区间，就开始按下一个价格区间计价，例如，100G 以内为 ￥0.5/G，100G \~ 1T 区间的 900G 价格为 ￥0.25/G。
 * 用预付费流量包抵扣时，从一开始就按流量包的价格计算，例如购买了 100T 的流量包，从一开始就按 ￥0.05/G 的价格计算。
 
-`注:阿里云后付费目前尚未推出流量包，可联系客服享受相同折扣`
+`注: 阿里云后付费目前尚未推出流量包功能，可联系客服享受相同折扣`
 
-以 ToplingDB 的写放大估计，$`NormSize`$ 一般为写入数据量的 5~10 倍，不同的数据 Pattern，写放大会有所不同，以实际为准。
-举例来说: 同时运行 sysbench 和 tpcc，对数据库发出约 6 MiB/s 持续的随机写，每小时产生的 $`NormSize`$ 约为 170 G，以原价计为 ￥85（貌似挺贵）。
-保持 6 MiB/s 的速度持续运行一年，产生 1489T 的 $`NormSize`$，使用按量付费价格为 ￥42,790，使用 10P 的预付费流量包，价格为￥18,613。
+以 ToplingDB 的写放大估计，_NormSize_ 一般为写入数据量的 5~10 倍，不同的数据 Pattern，写放大会有所不同，以实际为准。
+举例来说: 同时运行 sysbench 和 tpcc，对数据库发出约 6 MiB/s 持续的随机写，每小时产生的 _NormSize_ 约为 170 G，以原价计为 ￥85（貌似挺贵）。
+保持 6 MiB/s 的速度持续运行一年，产生 1489T 的 _NormSize_，使用按量付费价格为 ￥42,790，使用 10P 的预付费流量包，价格为￥18,613。
 对于普通应用，写压力远低于此，实际支出是非常低的。同时 MyTopling 带来的 3 倍以上 CPU、内存、SSD 节约，更加实实在在地降低了成本。
 
 实际上，一方面现实应用很少有这么高的写压力，另一方面 MyTopling 能承载的极限压力远高于此！此外，MyTopling 也有完全的私有化部署版本，SaaS 也运行在用户的 ECS 上，按传统方式收费，进一步为高负载应用降低成本。
