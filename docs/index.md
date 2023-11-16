@@ -71,7 +71,7 @@ MyTopling 默认创建的安全组没有放行 3306 端口，但同安全组内�
 
 ## 按量付费说明
 
-![image](https://github.com/topling/quickstart-toplingdb/assets/1574991/afd2ad92-451f-4cb5-b1da-ee58faa5ec0f)
+![](img/fee-formula-and-table.png)
 
 * 每超出前一个价格区间，就开始按下一个价格区间计价，例如，100G 以内为 ￥0.5/G，100G \~ 1T 区间的 900G 价格为 ￥0.25/G。
 * 用预付费流量包抵扣时，从一开始就按流量包的价格计算，例如购买了 100T 的流量包，从一开始就按 ￥0.05/G 的价格计算。
