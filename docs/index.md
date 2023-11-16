@@ -12,6 +12,11 @@ ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
 
 弹性计算服务收费相关详见[后文](#按量付费说明)
 
+## MyTopling 数据库的优势
+**ECS 8c32g 本地 SSD(ecs.i3g.2xlarge)**
+![image](https://github.com/topling/quickstart-toplingdb/assets/1574991/40f01c00-92cf-45eb-a881-349a96b9ec0b)
+
+
 ## MyTopling 数据库实例创建流程
 
 ### 1.创建数据库依赖项
