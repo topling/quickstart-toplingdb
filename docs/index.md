@@ -29,9 +29,12 @@ ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
 
 为数据库实例准备 VPC，每个地域必须创建一次且仅能创建一次。（本运行环境为 Topling 的所有数据库提供支撑，MyTopling 是其中之一）
 
-如果未开通 [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html) 则 [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
+**注意**：如果您未开通 [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html) 则 [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
 会创建失败。请删除后重建
 
+**注意**：如果您尚未开通 CDT，会出现以下提示信息，按照提示开通 CDT，然后继续下一步。
+
+![](./img/requires-ctd.png)
 
 ### 2. 创建 [MyTopling 数据库实例(点击跳转)](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-7e82cdf7c86f4d2f906e)
 
