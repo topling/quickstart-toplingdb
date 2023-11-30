@@ -14,7 +14,7 @@ ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
 
 ## MyTopling 数据库的优势
 **ECS 8c32g 本地 SSD(ecs.i3g.2xlarge)**
-![](img/mytopling-bench.png)
+![](img/mytopling-bench-60-indices.png)
 
 ## MyTopling 数据库实例创建流程
 
