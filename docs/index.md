@@ -1,8 +1,7 @@
 # 服务使用说明
 
 ## 产品说明
-ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
-* [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html) 执行代理运算。在数据库运行的过程中，Topling SaaS 弹性计算服务会按照使用运算量收取费用。
+ToplingDB SaaS 系列数据库(如 MyTopling)由以下两部分组成:
 
 * [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
 为后续创建 MyTopling 等数据库创建运行环境。包含VPC、vSwitch以及连接到 Topling SaaS 弹性计算服务的对等连接。ToplingDB 系列数据库必须部署在对应地域(Region)的运行环境下。
@@ -19,18 +18,14 @@ ToplingDB SaaS 系列数据库(如 MyTopling)由以下三部分组成:
 ## MyTopling 数据库实例创建流程
 
 ### 1.创建数据库依赖项
-#### 1.1 开通 [Topling SaaS 弹性计算服务(点击跳转)](https://market.aliyun.com/products/56024006/cmgj00064106.html)
-<img src="img/api-image.png" height="200"/>
-本服务是后续资源创建的基础，如果未开通，则无法继续。（本服务为 Topling 的所有数据库提供服务，MyTopling 是其中之一）
 
-#### 1.2 创建 [Topling 数据库部署环境(点击跳转)](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
+
+#### 1.1 创建 [Topling 数据库部署环境(点击跳转)](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
 
 <img src="img/topling-db-env.png" height="300"/>
 
 为数据库实例准备 VPC，每个地域必须创建一次且仅能创建一次。（本运行环境为 Topling 的所有数据库提供支撑，MyTopling 是其中之一）
 
-**注意**：如果您未开通 [Topling SaaS 弹性计算服务](https://market.aliyun.com/products/56024006/cmgj00064106.html) 则 [Topling 数据库运行环境](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-cb1b7a70ed544bbcaa75)
-会创建失败。请删除后重建
 
 **注意**：如果您尚未开通 CDT，会出现以下提示信息，按照提示开通 CDT，然后继续下一步。
 
@@ -98,8 +93,6 @@ MyTopling 默认创建的安全组没有放行 3306 端口，但同安全组内�
 ## 常见问题
 
 * 实例创建失败
-  - 弹性计算服务被关闭
-    - 如果您开通 `Topling SaaS 弹性计算服务` 后关闭了服务，将无法继续创建 ToplingDB 相关实例
   - 未开通 DMS 服务
     - 如果实例创建完成，但此用户尚未使用过阿里云的 DMS 服务，则可能会导致创建失败。然而此时实例数据库已创建成功，不影响 DMS 管理数据库之外的功能。
       - 注意，此时虽然计算巢资源栈创建失败，但 ECS 实例已经创建完成，因此阿里云会收取实例费用。
